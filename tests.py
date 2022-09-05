@@ -82,14 +82,14 @@ def test_get_all_pets_with_valid_key_amount_of_pets_failed(filter=''):
     assert status == 200
     assert len(result['pets']) == 0
 
-def test_add_new_pet_with_invalid_data(name='Sobaka', animal_type='Dog', age='4'):
+def test_add_new_pet_with_invalid_data(name='Mila', animal_type='Cat', age='1'):
     _, auth_key = pf.get_api_key(valid_email, valid_password)
     status, result = pf.add_new_pet_with_invalid_data(auth_key, name, animal_type, age)
     assert status == 400
     assert "Bad Request" in result
 
 
-def test_add_new_pet_with_invalid_data_failed(name='Sobaka', animal_type='Dog', age='4'):
+def test_add_new_pet_with_invalid_data_failed(name='Mila', animal_type='Cat', age='1'):
     _, auth_key = pf.get_api_key(valid_email, valid_password)
     status, result = pf.add_new_pet_with_invalid_data(auth_key, name, animal_type, age)
     assert status == 200
@@ -108,7 +108,7 @@ def test_get_list_of_my_pets_with_valid_key_failed(filter='my_pets'):
     assert status == 200
     assert len(result['pets']) == 0
 
-def test_update_my_pets_no_pets_exception(name='Kosha', animal_type='Koshka', age=5):
+def test_update_my_pets_no_pets_exception(name='Jerry', animal_type='Cat', age=1):
     _, auth_key = pf.get_api_key(valid_email, valid_password)
     _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
     if len(my_pets['pets']) > 0:
